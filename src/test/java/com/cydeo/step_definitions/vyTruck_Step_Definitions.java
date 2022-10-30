@@ -1,16 +1,33 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.pages.vyTruckPage;
+import com.cydeo.utilities.ConfigurationReader;
+import com.cydeo.utilities.Driver;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class vyTruck_Step_Definitions {
+    vyTruckPage vyTruckPage=new vyTruckPage();
+    WebDriverWait wait=new WebDriverWait(Driver.getDriver(),20);
+
+
     @When("Users are on the homepage")
     public void users_are_on_the_homepage() {
-
+        Driver.getDriver().get(ConfigurationReader.getProperty("webTableUrl"));
+        vyTruckPage.inputUserName.sendKeys(ConfigurationReader.getProperty("web.table.username"));
+        vyTruckPage.inputPassword.sendKeys(ConfigurationReader.getProperty("web.table.pw"));
+        vyTruckPage.loginButton.click();
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
     @When("Click the Vehicle under the Fleet")
     public void click_the_vehicle_under_the_fleet() {
-
+        wait.until(ExpectedConditions.visibilityOf(vyTruckPage.selectFleetBtn));
+         vyTruckPage.selectFleetBtn.click();
+         vyTruckPage.selectVehicleTab.click();
     }
     @Then("Verify all the checkboxes are unchecked")
     public void verify_all_the_checkboxes_are_unchecked() {
