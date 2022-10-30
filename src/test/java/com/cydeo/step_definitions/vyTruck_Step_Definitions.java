@@ -15,11 +15,14 @@ public class vyTruck_Step_Definitions {
     WebDriverWait wait=new WebDriverWait(Driver.getDriver(),20);
 
 
-    @When("Users are on the homepage")
-    public void users_are_on_the_homepage() {
+    @When("Users enter{string} and {string} and login to the homepage")
+    public void usersEnterUsernameAndPasswordAndLoginToTheHomepage(String string) {
         Driver.getDriver().get(ConfigurationReader.getProperty("webTableUrl"));
-        vyTruckPage.inputUserName.sendKeys(ConfigurationReader.getProperty("web.table.username"));
-        vyTruckPage.inputPassword.sendKeys(ConfigurationReader.getProperty("web.table.pw"));
+       // vyTruckPage.inputUserName.sendKeys(ConfigurationReader.getProperty("web.table.username"));
+       // vyTruckPage.inputPassword.sendKeys(ConfigurationReader.getProperty("web.table.pw"));
+        vyTruckPage.inputUserName.sendKeys(string);
+        vyTruckPage.inputPassword.sendKeys(string);
+
         vyTruckPage.loginButton.click();
         wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
@@ -52,5 +55,7 @@ public class vyTruck_Step_Definitions {
     }
 
 
+
     }
+
 

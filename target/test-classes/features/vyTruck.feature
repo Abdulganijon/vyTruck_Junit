@@ -1,9 +1,16 @@
 Feature:As a user, I should be to select any vehicle from the Vehicle page(web-table)
 
   Background:
-    When Users are on the homepage
+  @Login
+  Scenario Outline: Login into application with valid credentials
+    When Users enter'<Username>' and '<Password>' and login to the homepage
     And Click the Vehicle under the Fleet
-  @wip
+    Examples:
+      | Username       | Password    |
+      | user44         | UserUser123 |
+      | storemanager75 | UserUser123 |
+
+
   Scenario: users view unchecked checkboxes on the Vehicle
     Then Verify all the checkboxes are unchecked
 
