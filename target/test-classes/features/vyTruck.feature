@@ -1,6 +1,6 @@
 Feature:As a user, I should be to select any vehicle from the Vehicle page(web-table)
 
-  Background:
+  #Background:
   @Login
   Scenario Outline: Login into application with valid credentials
     When Users enter'<Username>' and '<Password>' and login to the homepage

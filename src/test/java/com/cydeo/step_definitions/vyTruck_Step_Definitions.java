@@ -16,20 +16,23 @@ public class vyTruck_Step_Definitions {
 
 
     @When("Users enter{string} and {string} and login to the homepage")
-    public void usersEnterUsernameAndPasswordAndLoginToTheHomepage(String string) {
+    public void usersEnterUsernameAndPasswordAndLoginToTheHomepage(String string, String string2) {
         Driver.getDriver().get(ConfigurationReader.getProperty("webTableUrl"));
+        wait.until(ExpectedConditions.visibilityOf(vyTruckPage.inputUserName));
        // vyTruckPage.inputUserName.sendKeys(ConfigurationReader.getProperty("web.table.username"));
        // vyTruckPage.inputPassword.sendKeys(ConfigurationReader.getProperty("web.table.pw"));
         vyTruckPage.inputUserName.sendKeys(string);
-        vyTruckPage.inputPassword.sendKeys(string);
+        vyTruckPage.inputPassword.sendKeys(string2);
 
         vyTruckPage.loginButton.click();
         wait.until(ExpectedConditions.titleIs("Dashboard"));
     }
     @When("Click the Vehicle under the Fleet")
-    public void click_the_vehicle_under_the_fleet() {
+    public void click_the_vehicle_under_the_fleet() throws InterruptedException {
         wait.until(ExpectedConditions.visibilityOf(vyTruckPage.selectFleetBtn));
          vyTruckPage.selectFleetBtn.click();
+         Thread.sleep(5000);
+         wait.until(ExpectedConditions.visibilityOf(vyTruckPage.selectVehicleTab));
          vyTruckPage.selectVehicleTab.click();
     }
     @Then("Verify all the checkboxes are unchecked")
