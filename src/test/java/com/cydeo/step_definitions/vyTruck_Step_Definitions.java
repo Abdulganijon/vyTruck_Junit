@@ -42,11 +42,12 @@ public class vyTruck_Step_Definitions {
     }
     @Then("Verify all the checkboxes are unchecked")
     public void verify_all_the_checkboxes_are_unchecked() {
-        if(vyTruckPage.uncheckedCheckbox.isDisplayed()){
+        try {
+            Assert.assertTrue(vyTruckPage.uncheckedCheckbox.isDisplayed());
             System.out.println("Verify if all checkboxes are selected: " + vyTruckPage.uncheckedCheckbox.isSelected());
-        }else{
+        }catch (Exception e){
             System.out.println("No CheckBox Button could be found");
-
+            Driver.closeDriver();
         }
     }
     @When("Click the 1st checkbox in the web-table")
