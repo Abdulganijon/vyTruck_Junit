@@ -9,13 +9,13 @@ public class vyTruckPage {
     public vyTruckPage(){
         PageFactory.initElements(Driver.getDriver(),this);
     }
-    @FindBy(xpath="//input[@id='prependedInput']")
+    @FindBy(id="prependedInput")
     public WebElement inputUserName;
 
-    @FindBy(xpath = "//input[@id='prependedInput2']")
+    @FindBy(id="prependedInput2")
     public WebElement inputPassword;
 
-    @FindBy(xpath = "//button[@id='_submit']")
+    @FindBy(id="_submit")
     public WebElement loginButton;
 
     @FindBy(xpath = "(//span[contains(normalize-space(),'Fleet')])[1]")
@@ -23,5 +23,8 @@ public class vyTruckPage {
 
     @FindBy(xpath = "(//span[contains(normalize-space(),'Vehicle')])[1]")
     public WebElement selectVehicleTab;
+
+    @FindBy(xpath = "(//table[@class]/tbody//tr//td/input)")
+    public WebElement uncheckedCheckbox;
 
 }
