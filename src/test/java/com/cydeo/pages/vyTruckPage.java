@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class vyTruckPage {
     public vyTruckPage(){
         PageFactory.initElements(Driver.getDriver(),this);
@@ -26,5 +28,15 @@ public class vyTruckPage {
 
     @FindBy(xpath = "(//table[@class]/tbody//tr//td/input)")
     public WebElement uncheckedCheckbox;
+
+    @FindBy(xpath = "(//button[@class='btn btn-default btn-small dropdown-toggle']/input)")
+    public WebElement clickFirstCheckbox;
+
+    @FindBy(xpath = "(//table[@class]/tbody//tr//td/input)[4]")
+    public WebElement checkAnyCheckBox;
+
+
+
+
 
 }
